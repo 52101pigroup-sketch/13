@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101116"><title>Пятница 13-го — офисная викторина</title>
+<style>
+:root{--bg:#101116;--panel:#22232b;--red:#e33b42;--text:#f5f3f3;--muted:#aaaab4;--line:#3a3b46}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -15%,#3a171d 0,transparent 48%),var(--bg);color:var(--text);font:16px/1.5 system-ui,Arial,sans-serif}
+.wrap{width:min(900px,calc(100% - 28px));margin:28px auto 64px}.hero{padding:34px 26px;text-align:center;border:1px solid #6d252d;border-radius:22px;background:linear-gradient(135deg,#45151d,#21141c 62%,#15151d);box-shadow:0 18px 50px #0006}
+.moon{font-size:34px;letter-spacing:12px}.eyebrow{font-size:12px;letter-spacing:3px;font-weight:800;color:#ff9da2}h1{font-size:clamp(32px,7vw,58px);line-height:1.02;margin:8px 0 12px}.hero p{margin:0;color:#e6cfd1}.catline{font-size:14px;color:#d7aeb1;margin-top:16px}
+.intro{color:var(--muted);text-align:center;margin:18px auto 24px;max-width:680px}.panel,.qcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #0002}
+.name-label{display:block;font-weight:750;margin-bottom:8px}input[type=text]{width:100%;background:#17181f;border:1px solid #4a4b57;border-radius:10px;padding:14px;color:var(--text);font:inherit}
+.progress-head{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:8px}.progress{height:7px;background:#3b3c46;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a91f2a,#ff6268)}
+.qtitle{font-size:17px;margin:0 0 14px}.qnum{color:#ff777d;font-size:12px;letter-spacing:1.5px;font-weight:850;margin-bottom:6px}.options{display:grid;gap:9px}
+.option{display:flex;gap:11px;padding:12px;border:1px solid #41424d;border-radius:11px;background:#292a33;cursor:pointer}.option:has(input:checked){border-color:var(--red);background:#3a2229}.option input{accent-color:var(--red);margin-top:4px}.letter{font-weight:800;color:#ff9297;min-width:24px}
+.actions{display:flex;justify-content:center;margin:26px 0 12px}button{border:0;border-radius:12px;background:linear-gradient(135deg,#f04a51,#bd2630);color:white;font:800 16px system-ui;padding:15px 28px;cursor:pointer}button:disabled{opacity:.6;cursor:wait}
+.note{color:var(--muted);font-size:13px;text-align:center}.error{display:none;background:#421f25;border:1px solid #a63c46;color:#ffd9dc;border-radius:10px;padding:12px;margin:14px 0}.success{display:none;text-align:center;padding:30px 20px}footer{text-align:center;color:#777782;font-size:12px;margin-top:30px}
+@media(max-width:600px){.wrap{margin-top:14px}.hero{padding:27px 16px}.panel,.qcard{padding:16px}.qtitle{font-size:16px}}
+</style></head><body><main class="wrap">
+<header class="hero"><div class="moon">🌙 ✦ 🐈‍⬛</div><div class="eyebrow">ОФИСНАЯ ВИКТОРИНА</div><h1>ПЯТНИЦА 13-ГО</h1><p>Проверь, насколько хорошо ты знаешь приметы и суеверия</p><div class="catline">Не бойся чёрной кошки. Бойся оставить вопрос без ответа.</div></header>
+<p class="intro">Введи имя, выбери по одному варианту в каждом вопросе и отправь ответы в конце. Удачи — она тебе пригодится 🕯️</p>
+<section id="quiz"><div class="panel"><label class="name-label" for="participant">Как тебя зовут?</label><input id="participant" type="text" maxlength="100" placeholder="Введи имя и фамилию"></div>
+<div class="panel"><div class="progress-head"><span>Прогресс викторины</span><span id="progressText">0 из 12</span></div><div class="progress"><span id="progressBar"></span></div></div>
+<div id="questions"></div><div class="error" id="error" role="alert"></div><div class="actions"><button id="submitBtn" type="button">Отправить ответы</button></div><p class="note">Ответы отправляются в Google Форму и сохраняются в связанную таблицу.</p></section>
+<section class="panel success" id="done"><div style="font-size:42px">🕯️</div><h2>Ответы отправлены!</h2><p>Запрос на отправку выполнен. Спасибо за участие!</p><p class="note">Организатору следует проверить появление записи в таблице.</p></section><footer>🐈‍⬛ ПЯТНИЦА 13-ГО · ОФИСНАЯ ВИКТОРИНА</footer></main>
+<iframe name="googleFormTarget" style="display:none"></iframe><form id="googleForm" method="POST" target="googleFormTarget" action="https://docs.google.com/forms/d/e/1FAIpQLScIKvYrE2F_-dAIRu7UNPRcDr3wZdz5QUO0h01crZAfYkSt0Q/formResponse" style="display:none"></form>
+<script>
+const fields=["entry.1588528910","entry.1982921516","entry.1546207537","entry.1751978241","entry.977119017","entry.1024696476","entry.67698637","entry.2131585357","entry.1168299045","entry.1983088181","entry.1367335653","entry.539203420","entry.67614883"];
+const qs=[
+["Что, согласно суеверию, означает разбитое зеркало?",["Скорую свадьбу","7 лет неудач","Богатство","Долгую дорогу"]],
+["Почему считается плохой приметой проходить под лестницей?",["Можно потерять удачу","Это сулит дождь","Можно поссориться с другом","К встрече с незнакомцем"]],
+["Что нельзя делать, если чёрная кошка перебежала дорогу?",["Оглядываться назад","Переходить дорогу следом","Продолжать путь без остановки","Свистеть"]],
+["Почему, согласно примете, нельзя свистеть в доме?",["Чтобы не разбудить домового","Чтобы не вызывать дождь","Чтобы не остаться без денег","Чтобы не поссориться с соседями"]],
+["Что нужно сделать, если вернулся домой за забытой вещью?",["Постучать три раза","Посмотреть в зеркало","Сесть на минуту","Повернуться вокруг себя"]],
+["Какое число считается несчастливым во многих западных странах?",["7","9","13","21"]],
+["Что означает, если птица постучала в окно?",["К неожиданным новостям","К скорому путешествию","К повышению на работе","К солнечной погоде"]],
+["Какой предмет принято вешать над входной дверью на удачу?",["Ложку","Подкову","Колокольчик","Ключ"]],
+["Что нельзя передавать через порог согласно русской примете?",["Книги","Деньги","Соль","Любые предметы"]],
+["Какой жест считается защитой от сглаза и неудачи в некоторых странах?",["Скрестить пальцы","Постучать по дереву","Потрогать левое ухо","Закрыть один глаз"]],
+["Почему рассыпать соль считалось верной приметой к ссоре?",["Соль разъедала полы в деревянных домах.","Запах рассыпанной соли вызывал головную боль у хозяев.","Раньше соль была крайне дорогой, и её потеря вызывала семейный скандал.","Соль использовали только для тёмных ритуалов."]],
+["В какой стране число 4 считается несчастливым так же сильно, как у нас 13?",["В Бразилии.","В Китае","В Исландии.","В Египте."]]
+];
+const latin=["A","B","C","D"],cyr=["А","Б","В","Г"],root=document.getElementById("questions");
+qs.forEach((q,i)=>{let card=document.createElement("section");card.className="qcard";let n=document.createElement("div");n.className="qnum";n.textContent=`ВОПРОС ${i+1} / 12`;let h=document.createElement("h2");h.className="qtitle";h.textContent=q[0];let opts=document.createElement("div");opts.className="options";
+q[1].forEach((a,j)=>{let prefix=(i<10?latin:cyr)[j],lab=document.createElement("label");lab.className="option";let r=document.createElement("input");r.type="radio";r.name=`q${i+1}`;r.value=`${prefix}. ${a}`;r.addEventListener("change",progress);let l=document.createElement("span");l.className="letter";l.textContent=prefix+".";let t=document.createElement("span");t.textContent=a;lab.append(r,l,t);opts.append(lab)});card.append(n,h,opts);root.append(card)});
+function progress(){let c=qs.filter((_,i)=>document.querySelector(`input[name="q${i+1}"]:checked`)).length;document.getElementById("progressText").textContent=`${c} из 12`;document.getElementById("progressBar").style.width=(c/12*100)+"%"}
+function err(s){let e=document.getElementById("error");e.textContent=s;e.style.display="block";e.scrollIntoView({behavior:"smooth",block:"center"})}
+document.getElementById("submitBtn").addEventListener("click",()=>{let name=document.getElementById("participant").value.trim();document.getElementById("error").style.display="none";if(!name){err("Сначала введи своё имя.");return}
+let answers=qs.map((_,i)=>document.querySelector(`input[name="q${i+1}"]:checked`)?.value||"");let missing=answers.findIndex(x=>!x);if(missing>=0){err(`Ответь на вопрос ${missing+1}, чтобы отправить викторину.`);document.querySelector(`input[name="q${missing+1}"]`).closest(".qcard").scrollIntoView({behavior:"smooth",block:"center"});return}
+let form=document.getElementById("googleForm");form.replaceChildren();[name,...answers].forEach((v,i)=>{let x=document.createElement("input");x.type="hidden";x.name=fields[i];x.value=v;form.append(x)});let b=document.getElementById("submitBtn");b.disabled=true;b.textContent="Отправляем…";form.submit();
+setTimeout(()=>{document.getElementById("quiz").style.display="none";document.getElementById("done").style.display="block";window.scrollTo({top:0,behavior:"smooth"})},1800);
+});
+</script></body></html>
